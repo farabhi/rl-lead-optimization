@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+ 
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb~
+ 
+# ChEMBL client's local HTTP cache
+.chembl_webresource_client*
+*.sqlite
+ 
+# OS noise
+.DS_Store
+Thumbs.db
+ 
+# Generated figures — the notebook rewrites these on every run, and its saved
+# cell outputs already embed them, so they render on GitHub without these files
+# existing separately.
+# If you later want to embed one directly in the README, comment out that line
+# so the file is tracked.
+rl_episode_scores.png
+rl_vs_qsar_headtohead.png
+rl_vs_qsar_fullpop.png
+ 
+# NOTE: data/egfr_chembl.parquet is deliberately NOT ignored.
+# It is an unreproducible INPUT, not a regenerable output. It came from a
+# ChEMBL release that has since been superseded, and the 6000-compound working
+# set is drawn with df_full.sample(), which samples BY POSITION — so
+# reproducing the published pool requires that exact file with its exact row
+# order, not merely the same ChEMBL release. At 336 KB it needs no LFS.
+ 

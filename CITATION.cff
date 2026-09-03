@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: >-
+  Reinforcement Learning for Molecular Lead Optimization: exploration
+  policies, and what has to be true before they can be compared
+message: >-
+  If you refer to this work, please cite it using the metadata below.
+type: software
+authors:
+  - given-names: Vlad
+    family-names: Navitski
+    orcid: https://orcid.org/0000-0002-6620-0123
+abstract: >-
+  A preliminary study comparing five reinforcement-learning exploration
+  policies — Random, epsilon-greedy, triggered epsilon-greedy, UCB and
+  Thompson Sampling — on EGFR inhibitor lead optimization using ChEMBL
+  bioactivity data. No learned policy outperformed random modification.
+  The study's main output is an account of the constraints that make that
+  comparison hard to run at all: a total-ordering defect that made the seed
+  pool platform-dependent, amplification of last-bit floating-point
+  differences through the reinforcement-learning feedback loop, and a single
+  linear weight matrix asked to represent every scaffold family at once.
+keywords:
+  - reinforcement learning
+  - drug discovery
+  - lead optimization
+  - QSAR
+  - cheminformatics
+  - reproducibility
+  - EGFR
+license: MIT

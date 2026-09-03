@@ -1,0 +1,10 @@
+{
+  "chembl_release": "ChEMBL_36",
+  "chembl_release_date": "2025-07",
+  "fetched": "2026-03",
+  "target": "CHEMBL203",
+  "committed": true,
+  "release_version_source": "retrospective",
+  "note": "The ChEMBL release was not recorded at fetch time. It was established retrospectively from the ChEMBL release calendar: CHEMBL36 was published in July 2025 and CHEMBL37 on 2026-05-01, with no release in between, which places this March 2026 fetch unambiguously within the CHEMBL36 window. The API serves whichever release is current, so a fetch in March 2026 received CHEMBL36.",
+  "why_committed": "At 336 KB this snapshot is committed to the repository rather than fetched on demand. A live fetch returns whichever release ChEMBL is serving that day, which yields a different compound set, a different seed pool, a different derived threshold, and therefore different results throughout. Committing the snapshot is what makes the published numbers reproducible, and it removes a dependency on the EBI API being reachable."
+}
