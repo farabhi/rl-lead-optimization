@@ -1,7 +1,7 @@
 # Reinforcement Learning for Molecular Lead Optimization
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/farabhi/rl-lead-optimization/blob/main/rl_lead_optimization.ipynb)
 
-*A reinforcement-learning experiment in computational drug discovery: can an RL agent learn to improve a candidate drug molecule? This iteration of the experiment says "not yet" — and why it's so is the most interesting part.*
+*A reinforcement-learning experiment in computational drug design: can an RL agent learn to improve a candidate drug molecule? This iteration of the experiment says "not yet" — and why it's so is the most interesting part.*
 
 ## Introduction
 
