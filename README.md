@@ -104,7 +104,7 @@ This is release **v1.0** — the preliminary study described above. The follow-u
 ## Writing
 
 - [Same code, same seed, different answer](https://farabhi.github.io/2026/09/03/same-code-same-seed-different-answer.html) — the sort defect and what it cost, without the chemistry
-- [Taking apart a result that (never) worked](https://farabhi.github.io/2026/09/10/taking-apart-a-result-that-worked.html) — how the result came apart, and what was actually producing it
+- [Taking apart a result that (never) worked](https://farabhi.github.io/2026/09/10/taking-apart-a-result-that-never-worked.html) — how the result came apart, and what was actually producing it
 
 ## License and data
 
