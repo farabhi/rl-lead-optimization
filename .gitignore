@@ -33,3 +33,5 @@ rl_vs_qsar_fullpop.png
 # reproducing the published pool requires that exact file with its exact row
 # order, not merely the same ChEMBL release. At 336 KB it needs no LFS.
  
+
+*.executed.ipynb

@@ -1,0 +1,61 @@
+name: docker
+
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - '.dockerignore'
+      - 'requirements.txt'
+      - '.github/workflows/docker.yml'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t rl-lead-optimization:ci .
+
+      # The build succeeding only proves the pins resolve. This proves the
+      # resolved versions are the intended ones and that every module the
+      # notebook imports actually loads.
+      - name: Verify the environment inside the image
+        run: |
+          docker run --rm rl-lead-optimization:ci python -c "
+          import sys, importlib.metadata as md
+          assert sys.version.split()[0] == '3.13.15', sys.version
+          want = {
+              'numpy': '2.1.3',
+              'pandas': '2.2.3',
+              'scipy': '1.16.3',
+              'scikit-learn': '1.6.1',
+              'rdkit': '2026.3.5',
+              'matplotlib': '3.10.0',
+              'chembl-webresource-client': '0.10.9',
+          }
+          bad = {k: (v, md.version(k)) for k, v in want.items() if md.version(k) != v}
+          assert not bad, f'version mismatch (wanted, got): {bad}'
+          from rdkit import Chem, RDLogger, rdBase
+          from rdkit.Chem import Descriptors, QED, Crippen, AllChem
+          from rdkit.Chem import rdMolDescriptors, DataStructs, RWMol
+          from sklearn.ensemble import RandomForestRegressor
+          from chembl_webresource_client.new_client import new_client
+          import matplotlib.pyplot as plt
+          assert Chem.MolFromSmiles('CCO') is not None
+          print('environment matches requirements.txt; all notebook imports load')
+          "
+
+      # The run reads the committed parquet, so it must be readable with the
+      # pinned pyarrow and must still be the snapshot the results came from.
+      - name: Verify the committed dataset loads
+        run: |
+          docker run --rm rl-lead-optimization:ci python -c "
+          import pandas as pd
+          df = pd.read_parquet('data/egfr_chembl.parquet')
+          assert len(df) == 10138, len(df)
+          assert {'canonical_smiles', 'pchembl_value'} <= set(df.columns), df.columns
+          print(f'parquet ok: {len(df)} rows')
+          "

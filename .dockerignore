@@ -1,0 +1,23 @@
+.git
+.github
+.gitignore
+
+__pycache__/
+.ipynb_checkpoints/
+.chembl_webresource_client*
+
+# Run outputs — regenerated inside the container, never shipped into it.
+*.executed.ipynb
+rl_episode_scores.png
+rl_vs_qsar_headtohead.png
+rl_vs_qsar_fullpop.png
+
+.DS_Store
+Thumbs.db
+
+Dockerfile
+.dockerignore
+
+# NOTE: data/ is deliberately absent from this file. The committed parquet is
+# the pinned input, and shipping it into the image is what lets a run proceed
+# with no network access.
